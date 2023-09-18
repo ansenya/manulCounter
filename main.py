@@ -37,7 +37,7 @@ def get_manul_pattern(s):
     if matches:
         number = matches.group(1)
         manul = matches.group(2)
-        if manul == "манулов" or manul == "манул":
+        if manul == "манулов" or manul == "манул" or manul == "манула":
             return [number, manul]
         return 0
     else:
@@ -53,7 +53,7 @@ def get_count_pattern(s):
         count = matches.group(2)
         manul = matches.group(3)
 
-        if check.lower() == "отсчитай" and manul == "манулов" or "манул":
+        if check.lower() == "отсчитай" and manul == "манулов" or "манул" or "манула":
             return [check, count, manul]
         return 0
     else:
