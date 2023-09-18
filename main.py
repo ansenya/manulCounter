@@ -15,15 +15,18 @@ def reply_to_hello(message):
 
     if countPattern:
         for i in range(int(countPattern[1])):
+            bot.send_message(message.chat.id, "{} манулов".format(numManuls + 1))
             numManuls += 1
-            bot.send_message(message.chat.id, "{} манулов".format(numManuls))
 
     if manulPattern:
-        if int(manulPattern[0]) < numManuls:
-            bot.send_message(message.chat.id, "это число меньше предыдущего. иди нахуй.")
+        if int(manulPattern[0]) <= numManuls:
+            bot.send_message(message.chat.id, "это число меньше или равно предыдущему. иди нахуй.")
             return
-        numManuls += 1
-        bot.send_message(message.chat.id, "{} манулов".format(numManuls))
+        if numManuls < 1:
+            numManuls += 1
+        else:
+            numManuls += 2
+        bot.send_message(message.chat.id, "{} манулов".format(numManuls + 1))
 
     if message.text.lower() == "манул":
         numManuls += 1
